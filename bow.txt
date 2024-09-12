@@ -1,0 +1,42 @@
+we are going to discuss a Natural Language Processing technique of text modeling known as 
+Bag of Words model. Whenever we apply any algorithm in NLP, it works on numbers. We cannot
+directly feed our text into that algorithm. Hence, Bag of Words model is used to preprocess
+the text by converting it into a bag of words, which keeps a count of the total 
+occurrences of most frequently used words. This model can be visualized using a table,
+which contains the count of words corresponding to the word itself. Applying the Bag of
+Words model:
+Step #1 : We will first preprocess the data, in order to:
+Convert text to lower case.
+Remove all non-word characters.
+Remove all punctuations.
+Step #2 : Obtaining most frequent words in our text. We will apply the following steps to generate our model.
+We declare a dictionary to hold our bag of words.
+Next we tokenize each sentence to words.
+Now for each word in sentence, we check if the word exists in our dictionary.
+If it does, then we increment its count by 1. If it doesn’t, we add it to our dictionary and set its count as 1.
+# Creating the Bag of Words model 
+word2count = {} 
+for data in dataset: 
+    words = nltk.word_tokenize(data) 
+    for word in words: 
+        if word not in word2count.keys(): 
+            word2count[word] = 1
+        else: 
+            word2count[word] += 1
+Step #3 : Building the Bag of Words model In this step we construct a vector, which would 
+tell us whether a word in each sentence is a frequent word or not. If a word in a sentence
+is a frequent word, we set it as 1, else we set it as 0. 
+<---------------------------------------------------------------------------------------->
+is one particularly simple way to represent a document in numerical form before we can 
+feed it into a machine learning algorithm. For any natural language processing task, we 
+need a way to accomplish this before any further processing. Machine learning algorithms 
+can’t operate on raw text; we need to convert the text to some sort of numerical 
+representation. This process is also known as embedding the text.
+
+There are two basic approaches to embedding a text: word vectors and document vectors. 
+With word vectors, we represent each individual word in the text as a vector (i.e., a 
+sequence of numbers). We then convert the whole document into a sequence of these word
+vectors. Document vectors, on the other hand, embed the entire document as a single vector. 
+This is actually much easier than embedding every word individually. It also allows all 
+of our documents to be embedded as the same size, which is convenient since many machine
+learning algorithms require a fixed-size input.
